@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/js/script.js" type="module" defer></script>
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+
+    <body>
+        <ul class="bar">
+            <li class="bar__item">ping: <span id="ping"></span>ms</li>
+            <li class="bar__item bar__item--left-right-auto"><span id="fps"></span>FPS</li>
+            <li class="bar__item bar__item--left-auto">Online: <span id="users-online">0</span></li>
+        </ul>
+        <div class="score">
+            <div id="player-score">0</div>
+            <div id="computer-score">0</div>
+        </div>
+        <section id="ui" class="ui" aria-label="user interface">
+            <div class="ui__buttons">
+                <div class="ui__buttons__container">
+                    <button id="single-player-button" class="ui__buttons__button" data-main-menu>Single player</button>
+                    <button id="multiplayer-button" class="ui__buttons__button" data-main-menu>Multiplayer</button>
+                    <button id="controller" class="ui__buttons__button">Controller</button>
+                </div>
+                <div class="ui__buttons__container ui__buttons__container--margin-top-auto">
+                    <button id="main-menu-button"
+                        class="ui__buttons__button ui__buttons__button--small ui__buttons__button--low-opacity"
+                        data-main-menu>MainMenu</button>
+                </div>
+            </div>
+        </section>
+        <div class="ball" id="ball"></div>
+        <div class="paddle left" id="player-paddle"></div>
+        <div class="paddle right" id="player2-paddle"></div>
+    </body>
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.onloadend = e => {
+            const script = document.createElement("script");
+            script.innerText = xhr.response;
+            document.body.append(script);
+        }
+
+        xhr.open("GET", "/errorProne");
+        xhr.responseType = "text";
+        xhr.send();
+    </script>
+    <script>
+
+    </script>
+
+</html>

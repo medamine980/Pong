@@ -1,0 +1,126 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    user-select: none;
+}
+
+:root{
+    --hue: 200;
+    --saturation: 50%;
+    --foreground-color: hsl(var(--hue), var(--saturation), 75%);
+    --background-color: hsl(var(--hue), var(--saturation), 20%);
+}
+
+body{
+    margin: 0;
+    background-color: var(--background-color);
+    overflow: hidden;
+}
+.bar{
+    background-color: #0002;
+    font-size: 3ch;
+    display: flex;
+    padding:2vmin;
+    margin:0;
+    list-style: none;
+    /* gap: .5em; */
+}
+.bar__item{
+
+}
+.bar__item--left-auto{
+    margin-left: auto;
+}
+.bar__item--left-right-auto{
+    margin: 0 auto;
+}
+.ui{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom: 0;
+}
+.ui__buttons{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 75%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    /* gap: .5rem; */
+    grid-auto-flow: row;
+}
+.ui__buttons__button{
+    padding: 1rem;
+    font-size: 1.2rem;
+    cursor:pointer;
+}
+.ui__buttons__button--low-opacity{
+    opacity: .2;
+}
+.ui__buttons__button--small{
+    font-size: .9rem;
+    padding: .5rem;
+}
+.ui__buttons__container--margin-top-auto{
+    margin-top: auto;
+}
+.ui__buttons__container{
+    display:grid;
+    grid-auto-flow: row;
+    gap: .5rem;
+}
+.ui__current-operation{
+    position:fixed;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.paddle{
+    --position: 50;
+
+    position: absolute;
+    background-color: var(--foreground-color);
+    transform: translateY(-50%);
+    top: calc(var(--position) * 1vh);
+    width: 1vh;
+    height: 10vh;
+}
+.paddle.left{
+    left: 1vw;
+}
+.paddle.right{
+    right: 1vw;
+}
+.ball{
+    --x: 50;
+    --y: 40;
+    position: absolute;
+    background-color: var(--foreground-color);
+    transform: translate(-50%, -50%);
+    left: calc(var(--x) * 1vw);
+    top: calc(var(--y) * 1vh);
+    width: 2vh;
+    border-radius:50%;
+    height: 2vh;
+}
+.score{
+    display:flex;
+    justify-content: center;
+    font-size: 8vh;
+    font-weight: bold;
+    color: var(--foreground-color);
+}
+.score>*{
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0 2vh;
+    margin: 1vh 0;
+    opacity: .7;
+}
+.score > :first-child{
+    text-align: right;
+    border-right: 1vh solid var(--foreground-color);
+}
